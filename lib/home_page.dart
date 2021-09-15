@@ -8,7 +8,6 @@ class Homepage extends StatefulWidget {
   @override
   _HomepageState createState() => _HomepageState();
 }
-//3822
 
 class _HomepageState extends State<Homepage> {
   @override
@@ -169,6 +168,22 @@ class _HomepageState extends State<Homepage> {
                     )
                   ],
                 ),
+              ),
+            ),
+            Container(
+              height: 180,
+              width: MediaQuery.of(context).size.width,
+              child: Stack(
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: 120,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        image: DecorationImage(
+                            image: AssetImage("assets/card.jpg"))),
+                  )
+                ],
               ),
             )
           ],
