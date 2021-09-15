@@ -99,6 +99,7 @@ class _HomepageState extends State<Homepage> {
                 padding: const EdgeInsets.only(
                   left: 20,
                   top: 25,
+                  right: 20,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -108,6 +109,50 @@ class _HomepageState extends State<Homepage> {
                       style: TextStyle(
                           fontSize: 16,
                           color: color.AppColor.homePageContainerTextSmall),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      "Legs Toning",
+                      style: TextStyle(
+                          fontSize: 25,
+                          color: color.AppColor.homePageContainerTextSmall),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      "and Glutes Workout",
+                      style: TextStyle(
+                          fontSize: 25,
+                          color: color.AppColor.homePageContainerTextSmall),
+                    ),
+                    //여기부터 시작하면 됩니다 Sizedbox넣으세요!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    Row(
+                      children: [
+                        Row(
+                          children: [
+                            Icon(Icons.timer,
+                                size: 20,
+                                color:
+                                    color.AppColor.homePageContainerTextSmall),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              "60 min",
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  color: color
+                                      .AppColor.homePageContainerTextSmall),
+                            ),
+                          ],
+                        ),
+                        Expanded(child: Container()),
+                        Icon(Icons.play_circle_fill,
+                            color: Colors.white, size: 60)
+                      ],
                     )
                   ],
                 ),
