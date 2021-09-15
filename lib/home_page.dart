@@ -8,6 +8,7 @@ class Homepage extends StatefulWidget {
   @override
   _HomepageState createState() => _HomepageState();
 }
+//3822
 
 class _HomepageState extends State<Homepage> {
   @override
@@ -128,8 +129,11 @@ class _HomepageState extends State<Homepage> {
                           fontSize: 25,
                           color: color.AppColor.homePageContainerTextSmall),
                     ),
-                    //여기부터 시작하면 됩니다 Sizedbox넣으세요!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    SizedBox(
+                      height: 25,
+                    ),
                     Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Row(
                           children: [
@@ -150,8 +154,17 @@ class _HomepageState extends State<Homepage> {
                           ],
                         ),
                         Expanded(child: Container()),
-                        Icon(Icons.play_circle_fill,
-                            color: Colors.white, size: 60)
+                        Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(60),
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: color.AppColor.gradientFirst,
+                                      blurRadius: 10,
+                                      offset: Offset(4, 8))
+                                ]),
+                            child: Icon(Icons.play_circle_fill,
+                                color: Colors.white, size: 60)),
                       ],
                     )
                   ],
