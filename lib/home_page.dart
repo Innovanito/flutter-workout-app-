@@ -123,7 +123,7 @@ class _HomepageState extends State<Homepage> {
                       height: 5,
                     ),
                     Text(
-                      "and Glutes Workout",
+                      "and Glutes Workout ",
                       style: TextStyle(
                           fontSize: 25,
                           color: color.AppColor.homePageContainerTextSmall),
@@ -170,8 +170,17 @@ class _HomepageState extends State<Homepage> {
                 ),
               ),
             ),
+            SizedBox(
+              height: 5,
+            ),
             Container(
               height: 180,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(colors: [
+                  Colors.red.withOpacity(0.2),
+                  Colors.green.withOpacity(0.2)
+                ], begin: Alignment.bottomLeft, end: Alignment.centerRight),
+              ),
               width: MediaQuery.of(context).size.width,
               child: Stack(
                 children: [
@@ -179,9 +188,11 @@ class _HomepageState extends State<Homepage> {
                     width: MediaQuery.of(context).size.width,
                     height: 120,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        image: DecorationImage(
-                            image: AssetImage("assets/card.jpg"))),
+                      borderRadius: BorderRadius.circular(20),
+                      image: DecorationImage(
+                          image: AssetImage("assets/card.jpg"),
+                          fit: BoxFit.fill),
+                    ),
                   )
                 ],
               ),
