@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
+import 'dart:convert';
 import './colors.dart' as color;
 
 class Homepage extends StatefulWidget {
@@ -12,12 +13,11 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
+  List info = [];
   _initData() {
     DefaultAssetBundle.of(context)
         .loadString("json/info.json")
-        .then((value) => {
-              // json.decode(value);
-            });
+        .then((value) => {info = json.decode(value)});
   }
 
   @override
@@ -271,7 +271,7 @@ class _HomepageState extends State<Homepage> {
             ),
             Expanded(
                 child: ListView.builder(
-                    itemCount: 4,
+                    itemCount: info.length,
                     itemBuilder: (_, i) {
                       return Row(
                         children: [
