@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/painting.dart';
 import 'colors.dart' as color;
+import 'dart:convert';
 
 class VideoInfo extends StatefulWidget {
   const VideoInfo({Key? key}) : super(key: key);
@@ -10,6 +12,21 @@ class VideoInfo extends StatefulWidget {
 }
 
 class _VideoInfoState extends State<VideoInfo> {
+  List info = [];
+  _initData() {
+    DefaultAssetBundle.of(context)
+        .loadString("json/video_info.json")
+        .then((value) {
+      info = json.decode(value);
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _initData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,24 +75,133 @@ class _VideoInfoState extends State<VideoInfo> {
                   style: TextStyle(
                       fontSize: 25, color: color.AppColor.secondPageTitleColor),
                 ),
-                Row(children: [
-                  Container(
-                    width: 90,
-                    height: 30,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      gradient: LinearGradient(colors: [
-                        color.AppColor.secondPageContainerGradient1stColor,
-                        color.AppColor.secondPageContainerGradient2ndColor
-                      ],
-                      begin: Alignment.bottomLeft,
-                      end: Alignment.topRight),
-                    ),),
-                  )
-                ],)
+                SizedBox(
+                  height: 50,
+                ),
+                Row(
+                  children: [
+                    Container(
+                      width: 90,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        gradient: LinearGradient(
+                          colors: [
+                            color.AppColor.secondPageContainerGradient1stColor,
+                            color.AppColor.secondPageContainerGradient2ndColor,
+                          ],
+                          begin: Alignment.bottomLeft,
+                          end: Alignment.topRight,
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.timer,
+                            size: 20,
+                            color: color.AppColor.secondPageIconColor,
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Text(
+                            "68 min",
+                            style: TextStyle(
+                                fontSize: 16,
+                                color: color.AppColor.secondPageIconColor),
+                          )
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Container(
+                      width: 250,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        gradient: LinearGradient(
+                          colors: [
+                            color.AppColor.secondPageContainerGradient1stColor,
+                            color.AppColor.secondPageContainerGradient2ndColor,
+                          ],
+                          begin: Alignment.bottomLeft,
+                          end: Alignment.topRight,
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.handyman_outlined,
+                            size: 20,
+                            color: color.AppColor.secondPageIconColor,
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Text(
+                            "Resistent band, kettlebell",
+                            style: TextStyle(
+                                fontSize: 16,
+                                color: color.AppColor.secondPageIconColor),
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
               ],
             ),
-          )
+          ),
+          Expanded(
+              child: Container(
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(topRight: Radius.circular(70))),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 30,
+                ),
+                Row(
+                  children: [
+                    SizedBox(width: 30),
+                    Text(
+                      "Circuit 1: Legs Toning",
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: color.AppColor.circuitsColor),
+                    ),
+                    Expanded(child: Container()),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.loop,
+                          size: 30,
+                          color: color.AppColor.loopColor,
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          "3 sets",
+                          style: TextStyle(
+                              fontSize: 15, color: color.AppColor.setsColor),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ))
         ],
       ),
     ));
