@@ -270,20 +270,24 @@ class _HomepageState extends State<Homepage> {
               ],
             ),
             Expanded(
+              child: OverflowBox(
+                maxWidth: MediaQuery.of(context).size.width,
                 child: ListView.builder(
-                    itemCount: info.length,
+                    itemCount: (info.length.toDouble() / 2).toInt(), //2
                     itemBuilder: (_, i) {
+                      int a = 2 * i;
+                      int b = 2 * i + 1;
                       return Row(
                         children: [
                           Container(
-                            width: 160,
+                            width: 200,
                             height: 170,
                             padding: EdgeInsets.only(bottom: 5),
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(15),
                                 image: DecorationImage(
-                                    image: AssetImage("assets/ex$i.png")),
+                                    image: AssetImage(info[a]["img"])),
                                 boxShadow: [
                                   BoxShadow(
                                       blurRadius: 3,
@@ -300,7 +304,39 @@ class _HomepageState extends State<Homepage> {
                                 child: Align(
                               alignment: Alignment.bottomCenter,
                               child: Text(
-                                info[i]["title"],
+                                info[a]["title"],
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    color: color.AppColor.homePageDetail),
+                              ),
+                            )),
+                          ),
+                          Container(
+                            width: 160,
+                            height: 170,
+                            padding: EdgeInsets.only(bottom: 5),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(15),
+                                image: DecorationImage(
+                                    image: AssetImage(info[b]["img"])),
+                                boxShadow: [
+                                  BoxShadow(
+                                      blurRadius: 3,
+                                      offset: Offset(5, 5),
+                                      color: color.AppColor.gradientSecond
+                                          .withOpacity(0.1)),
+                                  BoxShadow(
+                                      blurRadius: 3,
+                                      offset: Offset(-5, -5),
+                                      color: color.AppColor.gradientSecond
+                                          .withOpacity(0.1)),
+                                ]),
+                            child: Center(
+                                child: Align(
+                              alignment: Alignment.bottomCenter,
+                              child: Text(
+                                info[b]["title"],
                                 style: TextStyle(
                                     fontSize: 20,
                                     color: color.AppColor.homePageDetail),
@@ -309,7 +345,9 @@ class _HomepageState extends State<Homepage> {
                           )
                         ],
                       );
-                    }))
+                    }),
+              ),
+            )
           ],
         ),
       ),
