@@ -4,6 +4,8 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'dart:convert';
 import './colors.dart' as color;
+import 'package:video_player_app_new/video_info.dart';
+import 'package:get/get.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -84,8 +86,13 @@ class _HomepageState extends State<Homepage> {
                 SizedBox(
                   width: 5,
                 ),
-                Icon(Icons.arrow_forward,
-                    size: 20, color: color.AppColor.homePageIcons),
+                InkWell(
+                  onTap: () {
+                    Get.to(() => VideoInfo());
+                  },
+                  child: Icon(Icons.arrow_forward,
+                      size: 20, color: color.AppColor.homePageIcons),
+                )
               ],
             ),
             SizedBox(
