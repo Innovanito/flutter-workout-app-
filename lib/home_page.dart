@@ -15,9 +15,9 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage> {
   List info = [];
   _initData() {
-    DefaultAssetBundle.of(context)
-        .loadString("json/info.json")
-        .then((value) => {info = json.decode(value)});
+    DefaultAssetBundle.of(context).loadString("json/info.json").then((value) {
+      info = json.decode(value);
+    });
   }
 
   @override
@@ -276,14 +276,14 @@ class _HomepageState extends State<Homepage> {
                       return Row(
                         children: [
                           Container(
-                            width: 200,
+                            width: 160,
                             height: 170,
                             padding: EdgeInsets.only(bottom: 5),
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(15),
                                 image: DecorationImage(
-                                    image: AssetImage("assets/ex1.png")),
+                                    image: AssetImage("assets/ex$i.png")),
                                 boxShadow: [
                                   BoxShadow(
                                       blurRadius: 3,
@@ -300,7 +300,7 @@ class _HomepageState extends State<Homepage> {
                                 child: Align(
                               alignment: Alignment.bottomCenter,
                               child: Text(
-                                "glues",
+                                info[i]["title"],
                                 style: TextStyle(
                                     fontSize: 20,
                                     color: color.AppColor.homePageDetail),
