@@ -45,7 +45,7 @@ class _VideoInfoState extends State<VideoInfo> {
       child: Column(
         children: [
           Container(
-            padding: const EdgeInsets.only(top: 70, left: 30, right: 30),
+            padding: const EdgeInsets.only(top: 70, left: 20, right: 20),
             width: MediaQuery.of(context).size.width,
             height: 300,
             child: Column(
@@ -87,7 +87,7 @@ class _VideoInfoState extends State<VideoInfo> {
                 Row(
                   children: [
                     Container(
-                      width: 90,
+                      width: 80,
                       height: 30,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
@@ -121,7 +121,7 @@ class _VideoInfoState extends State<VideoInfo> {
                       ),
                     ),
                     SizedBox(
-                      width: 20,
+                      width: 10,
                     ),
                     Container(
                       width: 250,
@@ -142,11 +142,11 @@ class _VideoInfoState extends State<VideoInfo> {
                         children: [
                           Icon(
                             Icons.handyman_outlined,
-                            size: 20,
+                            size: 15,
                             color: color.AppColor.secondPageIconColor,
                           ),
                           SizedBox(
-                            width: 5,
+                            width: 15,
                           ),
                           Text(
                             "Resistent band, kettlebell",
