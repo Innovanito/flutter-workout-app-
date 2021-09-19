@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
+import 'package:video_player/video_player.dart';
 import 'colors.dart' as color;
 import 'dart:convert';
 import 'package:get/get.dart';
@@ -203,7 +204,7 @@ class _VideoInfoState extends State<VideoInfo> {
                               )
                             ],
                           )),
-                      _playView(context),
+                      // _playView(context),
                     ],
                   ),
                 ),
@@ -265,7 +266,10 @@ class _VideoInfoState extends State<VideoInfo> {
 
   _playView(BuildContext context) {}
 
-  _onTapVideo(int index) {}
+  _onTapVideo(int index) {
+    final controller =
+        VideoPlayerController.network(videoInfo[index]["videoUrl"]);
+  }
 
   _listView() {
     return ListView.builder(
