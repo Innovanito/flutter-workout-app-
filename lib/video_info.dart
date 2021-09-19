@@ -17,6 +17,7 @@ class VideoInfo extends StatefulWidget {
 class _VideoInfoState extends State<VideoInfo> {
   List videoInfo = [];
   bool _playArea = false;
+  late VideoPlayerController _controller;
   _initData() async {
     await DefaultAssetBundle.of(context)
         .loadString("json/video_info.json")
@@ -264,11 +265,28 @@ class _VideoInfoState extends State<VideoInfo> {
   }
   //From this line after the functions are defined
 
-  _playView(BuildContext context) {}
+  Widget _playView(BuildContext context) {
+    final controller = _controller;
+    if (controller != null && controller.value.isInitialized) {
+      return Container(
+        height: 300,
+        width: 300,
+        child: VideoPlayer(controller),
+      );
+    } else {
+      return Text("Being initialized please wait");
+    }
+  }
 
   _onTapVideo(int index) {
     final controller =
         VideoPlayerController.network(videoInfo[index]["videoUrl"]);
+    _controller = controller;
+    setState(() {});
+    controller
+      ..initialize().then((_) {
+        controller.play();
+      });
   }
 
   _listView() {
